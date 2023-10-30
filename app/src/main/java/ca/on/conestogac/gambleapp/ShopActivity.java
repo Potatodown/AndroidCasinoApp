@@ -21,6 +21,8 @@ public class ShopActivity extends AppCompatActivity {
     private TextView bears;
     private TextView cars;
     private TextView houses;
+    int money = 0;
+    TextView  currency;
     GambleApplication application;
 
     @Override
@@ -33,36 +35,37 @@ public class ShopActivity extends AppCompatActivity {
         }
         refreshStats();
         ArrayList goff = application.getStats();
-        ArrayList jeff = application.getPurchases();
-        int money = Integer.parseInt(goff.get(0).toString());
+        money = Integer.parseInt(goff.get(0).toString());
         View.OnClickListener purchaseListener = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (R.id.buybear == view.getId()) {
+                if (R.id.buyBear == view.getId()) {
                     if (money >= 50) {
                         application.buybear(-50, 1);
                     }
 
-                }
-                else if (R.id.buyCar == view.getId()) {
+                } else if (R.id.buyCar == view.getId()) {
                     if (money >= 2500) {
                         application.buycar(-2500, 1);
                     }
 
-                }
-                else {
-                    if(money >= 10000){
+                } else {
+                    if (money >= 10000) {
                         application.buyhouse(-10000, 1);
                     }
 
                 }
+                currency.setText("Currency: "+money);
+                refreshStats();
             }
         };
-        buttonSmall.findViewById(R.id.buybear);
-        buttonMid.findViewById(R.id.buyCar);
-        buttonLarge.findViewById(R.id.buyhouse);
+        buttonSmall = findViewById(R.id.buyBear);
         buttonSmall.setOnClickListener(purchaseListener);
+
+        buttonMid = findViewById(R.id.buyCar);
         buttonMid.setOnClickListener(purchaseListener);
+
+        buttonLarge = findViewById(R.id.buyHouse);
         buttonLarge.setOnClickListener(purchaseListener);
     }
 
@@ -71,12 +74,16 @@ public class ShopActivity extends AppCompatActivity {
         bears = findViewById(R.id.textView2);
         cars = findViewById(R.id.textView3);
         houses = findViewById(R.id.textView4);
+        currency = findViewById(R.id.CurrencyText);
 
         application = (GambleApplication) getApplication();
-        ArrayList jeff = application.getPurchases();
-        bears.setText("Owned: "+ jeff.get(0));
-        cars.setText("Owned: "+ jeff.get(1));
-        houses.setText("Owned: "+ jeff.get(2));
+        ArrayList UserData = application.getPurchases();
+        bears.setText("Owned: "+ UserData.get(0));
+        cars.setText("Owned: "+ UserData.get(1));
+        houses.setText("Owned: "+ UserData.get(2));
+        ArrayList moneyData = application.getStats();
+        money = (int) moneyData.get(0);
+        currency.setText("Currency:" + money);
 
     }
 

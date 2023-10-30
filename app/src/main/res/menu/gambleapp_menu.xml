@@ -3,11 +3,11 @@
 
     <item
         android:id="@+id/menu_game"
-        android:title="menu_game" />
+        android:title="Help" />
     <item
         android:id="@+id/menu_shop"
-        android:title="menu_shop" />
+        android:title="Shop" />
     <item
         android:id="@+id/menu_settings"
-        android:title="menu_settings" />
+        android:title="Settings" />
 </menu>

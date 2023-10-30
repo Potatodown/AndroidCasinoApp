@@ -22,7 +22,7 @@ public class GambleApplication extends Application {
             public void onCreate(SQLiteDatabase sqLiteDatabase) {
                 sqLiteDatabase.execSQL("CREATE TABLE IF NOT EXISTS tbl_user(" +
                         "money INTEGER, wins INTEGER, loses INTEGER, bears INTEGER, cars INTEGER, houses INTEGER)");
-               sqLiteDatabase.execSQL("INSERT INTO tbl_user (money) VALUES(500)");
+               sqLiteDatabase.execSQL("INSERT INTO tbl_user (money) VALUES(1500)");
             }
 
             @Override
@@ -70,6 +70,7 @@ public class GambleApplication extends Application {
     public void buycar(int money, int car) {
         SQLiteDatabase db = helper.getWritableDatabase();
         db.execSQL("INSERT INTO tbl_user (money, cars) VALUES(" + money + ", "+car+")");
+
     }
 
     public void buyhouse(int money, int house) {

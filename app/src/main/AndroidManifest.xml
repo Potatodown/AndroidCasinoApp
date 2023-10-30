@@ -14,6 +14,13 @@
         android:theme="@style/Theme.GambleApp"
         tools:targetApi="31">
         <activity
+            android:name=".HelpActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".ShopActivity"
             android:exported="false">
             <meta-data
@@ -23,15 +30,6 @@
         <activity
             android:name=".SettingsActivity"
             android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
-            android:name=".GameActivity"
-            android:exported="false"
-            android:label="@string/title_activity_game"
-            android:theme="@style/Theme.GambleApp.NoActionBar">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
